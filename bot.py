@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import configparser
+import json
 import logging
 import random
 import re
@@ -37,17 +38,7 @@ def reduplicate(bot, update):
         bot.sendMessage(update.message.chat_id, text=message)
 
     except ReduplicatorException:
-        choices = [
-            'Что ты несёшь вообще?',
-            'Иногда лучше жевать, чем говорить.',
-            'Я помню плыли в вышине, и вдруг погасли две здвезды.',
-            'Попробуй догони меня!',
-            'Ты тратишь свое драгоценное время на общение с ботом.',
-            'У меня голова болит, давай завтра?',
-            'Зима близко.',
-            'Винтовка — это праздник!',
-            '...'
-        ]
+        choices = json.loads(config.get('main', 'answers'))
         bot.sendMessage(update.message.chat_id, text=random.choice(choices))
 
 
