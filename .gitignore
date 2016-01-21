@@ -1,0 +1,4 @@
+*.conf
+*.log
+*.pyc
+*.idea
